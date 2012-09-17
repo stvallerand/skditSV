@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--    QuickSched web app 
+        Copyright 2012, Mathieu Bouchard
+        Licensed under the GPL Version 3 license.
+        http://q-opt.com    -->
+
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>QuickSched (beta)</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/formalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui-quicksched.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/navigation.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/gantt.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/workers.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/tags.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/resources.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/tasks.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/shifts.css" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script> 
+    <script type="text/javascript" src="js/jquery.js"></script>  
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.formalize.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.map.full.min.js"></script>
+    <script type="text/javascript" src="js/wiki2html.js"></script>
+    <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="js/allmap.js"></script>
+    <script type="text/javascript" src="js/colorpicker.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/gantt.js"></script>
+    <script type="text/javascript" src="js/workers.js"></script>
+    <script type="text/javascript" src="js/tags.js"></script>
+    <script type="text/javascript" src="js/resources.js"></script>
+    <script type="text/javascript" src="js/tasks.js"></script>
+    <script type="text/javascript" src="js/shifts.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/quicksched.js"></script>
+    
+</head>
+<body>
+    <div id="appmain">
+        <div id="topcontent">
+            <ul id="topelem">
+                <li><div class="borderelement hundredblock"></div></li>
+                <li><div id="logo" class="borderelement"></div></li>
+                <li><div id="title" class="borderelement">
+                    <h3>QuickSchedule (beta)</h3>
+                </div></li>
+               <!-- <li><div id="cdSiteSeal1" class="borderelementr"><script id="sealimg" type="text/javascript" src="//tracedseals.starfieldtech.com/siteseal/get?scriptId=cdSiteSeal1&amp;cdSealType=Seal1&amp;sealId=55e4ye7y7mb73b45102be08020c4d8rhvh7y7mb7355e4ye70dc3c7b95ad9c33a"></script></div></li> -->
+                <li ><div id="loginzone" class="borderelementr"><input type="button" value="Login" id="dologin" href="#login-form"/></div></li>
+                <li ><div id="userzone" class="borderelementr"><h2 id="usernametag">myuser name</h2><input type="button" value="Logout" id="dologout"/></div></li>
+            </ul>     
+        </div>
+        <div id="maintabs">
+                <ul>
+                    <li class="qs-left-menu"><a href="#workers"><img src="img/worker-col.png" border="0" width="27px" height="27px"><div style="width: 82px; font-size: 10px; text-align: center">Workers</div></a></li>
+                    <li class="qs-left-menu"><a href="#tasks"><img src="img/task-col.png" border="0" width="27px" height="27px"><div style="font-size: 10px; text-align: center">Tasks</div></a></li>
+                    <li class="qs-left-menu"><a href="#shifts"><img src="img/shift-col.png" border="0" width="27px" height="27px"><div style="font-size: 10px; text-align: center">Shifts</div></a></li>
+                    <li class="qs-left-menu"><a href="#resources"><img src="img/resource-col.png" border="0" width="27px" height="27px"><div style="font-size: 10px; text-align: center">Resources</div></a></li>
+                    <li class="qs-left-menu"><a href="#tags"><img src="img/tag-col.png" border="0" width="30px" height="27px"><div style="font-size: 10px; text-align: center">Tags</div></a></li>
+                    <li class="qs-left-menu"><a href="#solver"><img src="img/solver-col.png" border="0" width="30px" height="27px"><div style="font-size: 10px; text-align: center">Solver</div></a></li>
+                    <li class="qs-left-menu"><a href="#solution"><img src="img/solution-col.png" border="0" width="27px" height="27px"><div style="font-size: 10px; text-align: center">Solution</div></a></li>
+                    <li class="qs-left-menu"><a href="#settings"><img src="img/setting-col.png" border="0" width="27px" height="27px"><div style="font-size: 10px; text-align: center">Settings</div></a></li>
+                </ul>
+                <div id="workers" class="mainpanel"></div>
+                <div id="tasks" class="mainpanel"></div>
+                <div id="shifts" class="mainpanel"></div>
+                <div id="resources" class="mainpanel"></div>
+                <div id="tags" class="mainpanel"></div>
+                <div id="solver" class="mainpanel"><p>Solver $$x_2$$</p></div>
+                <div id="solution" class="mainpanel">Solution</div>
+                <div id="settings" class="mainpanel">Settings</div>
+        </div>
+    </div>
+    <div id="login-form" title="Login"></div>
+    <div id="register-form" title="Register"></div>
+    <div id="worker-form" title="Workers"></div>
+    <div id="task-form" title="Tasks"></div>
+    <div id="shift-form" title="Shifts"></div>
+    <div id="tag-form" title="Tags"></div>
+    <div id="resource-form" title="Resources"></div>
+    <div id="leave-form" title="Leaves"></div>
+    <div id="break-form" title="Breaks"></div>
+    <div id="demand-form" title="Demands"></div>
+    <div id="taskres-form" title="Breaks"></div>
+    <div id="locmap" title="Set location"></div>
+    <div id="tasknotes" title="Task note"></div>
+    <div id="fullscreen"></div>
+</body>                                                                 
+</html>
